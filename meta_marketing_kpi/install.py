@@ -3,13 +3,14 @@ from __future__ import annotations
 import frappe
 
 
-WORKSPACE_NAME = "Meta Marketing Dashboard"
-WORKSPACE_LABEL = "Meta Marketing KPI"
-WORKSPACE_TITLE = "Meta Marketing KPI"
+WORKSPACE_NAME = "Meta Ads KPI"
+WORKSPACE_LABEL = "Meta Ads KPI"
+WORKSPACE_TITLE = "Meta Ads KPI"
 WORKSPACE_MODULE = "Meta Marketing KPI"
+LEGACY_WORKSPACE_NAMES = ("Meta Marketing KPI", "Meta Marketing Dashboard")
 
 WORKSPACE_CONTENT = (
-    '[{"id":"meta_header","type":"header","data":{"text":"Meta Marketing KPI","col":12}},'
+    '[{"id":"meta_header","type":"header","data":{"text":"Meta Ads KPI","col":12}},'
     '{"id":"meta_shortcut_1","type":"shortcut","data":{"shortcut_name":"Meta Marketing KPI","col":3}},'
     '{"id":"meta_shortcut_2","type":"shortcut","data":{"shortcut_name":"Meta Raw Data","col":3}},'
     '{"id":"meta_shortcut_3","type":"shortcut","data":{"shortcut_name":"Campaign Performance","col":3}},'
@@ -33,14 +34,16 @@ WORKSPACE_SHORTCUTS = [
     {
         "color": "Orange",
         "label": "Campaign Performance",
-        "type": "URL",
-        "url": "/app/query-report/Campaign%20Performance?doctype=Meta%20Marketing%20KPI",
+        "link_to": "Campaign Performance",
+        "report_ref_doctype": "Meta Marketing KPI",
+        "type": "Report",
     },
     {
         "color": "Purple",
         "label": "Ad Performance",
-        "type": "URL",
-        "url": "/app/query-report/Ad%20Performance?doctype=Meta%20Marketing%20KPI",
+        "link_to": "Ad Performance",
+        "report_ref_doctype": "Meta Marketing KPI",
+        "type": "Report",
     },
     {
         "color": "Teal",
@@ -77,6 +80,7 @@ def ensure_workspace() -> None:
     if not frappe.db.exists("DocType", "Workspace"):
         return
 
+    migrate_legacy_workspace()
     release_duplicate_workspace_label()
 
     if not frappe.db.exists("Workspace", WORKSPACE_NAME):
@@ -88,6 +92,7 @@ def ensure_workspace() -> None:
                 "title": WORKSPACE_TITLE,
                 "module": WORKSPACE_MODULE,
                 "public": 1,
+                "is_hidden": 0,
                 "icon": "chart",
                 "content": WORKSPACE_CONTENT,
             }
@@ -105,6 +110,7 @@ def ensure_workspace() -> None:
             "title": WORKSPACE_TITLE,
             "module": WORKSPACE_MODULE,
             "public": 1,
+            "is_hidden": 0,
             "icon": "chart",
             "content": WORKSPACE_CONTENT,
         },
@@ -133,6 +139,32 @@ def ensure_workspace() -> None:
         row.db_insert()
 
 
+def migrate_legacy_workspace() -> None:
+    for workspace_name in LEGACY_WORKSPACE_NAMES:
+        if workspace_name == WORKSPACE_NAME or not frappe.db.exists("Workspace", workspace_name):
+            continue
+
+        if not frappe.db.exists("Workspace", WORKSPACE_NAME):
+            frappe.rename_doc(
+                "Workspace",
+                workspace_name,
+                WORKSPACE_NAME,
+                force=True,
+            )
+            return
+
+        frappe.db.set_value(
+            "Workspace",
+            workspace_name,
+            {
+                "label": get_legacy_workspace_label(workspace_name),
+                "is_hidden": 1,
+                "public": 0,
+            },
+            update_modified=False,
+        )
+
+
 def release_duplicate_workspace_label() -> None:
     duplicate_workspaces = frappe.get_all(
         "Workspace",
@@ -147,6 +179,7 @@ def release_duplicate_workspace_label() -> None:
             {
                 "label": get_legacy_workspace_label(workspace_name),
                 "is_hidden": 1,
+                "public": 0,
             },
             update_modified=False,
         )

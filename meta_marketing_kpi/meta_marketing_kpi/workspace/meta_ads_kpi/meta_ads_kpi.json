@@ -1,6 +1,6 @@
 {
  "charts": [],
- "content": "[{\"id\":\"meta_header\",\"type\":\"header\",\"data\":{\"text\":\"Meta Marketing KPI\",\"col\":12}},{\"id\":\"meta_shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meta Marketing KPI\",\"col\":3}},{\"id\":\"meta_shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meta Raw Data\",\"col\":3}},{\"id\":\"meta_shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Campaign Performance\",\"col\":3}},{\"id\":\"meta_shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ad Performance\",\"col\":3}},{\"id\":\"meta_shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Account Performance\",\"col\":3}}]",
+ "content": "[{\"id\":\"meta_header\",\"type\":\"header\",\"data\":{\"text\":\"Meta Ads KPI\",\"col\":12}},{\"id\":\"meta_shortcut_1\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meta Marketing KPI\",\"col\":3}},{\"id\":\"meta_shortcut_2\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Meta Raw Data\",\"col\":3}},{\"id\":\"meta_shortcut_3\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Campaign Performance\",\"col\":3}},{\"id\":\"meta_shortcut_4\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Ad Performance\",\"col\":3}},{\"id\":\"meta_shortcut_5\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"Account Performance\",\"col\":3}}]",
  "custom_blocks": [],
  "docstatus": 0,
  "doctype": "Workspace",
@@ -9,10 +9,10 @@
  "icon": "chart",
  "indicator_color": null,
  "is_hidden": 0,
- "label": "Meta Marketing KPI",
+ "label": "Meta Ads KPI",
  "links": [],
  "module": "Meta Marketing KPI",
- "name": "Meta Marketing Dashboard",
+ "name": "Meta Ads KPI",
  "number_cards": [],
  "parent_page": null,
  "public": 1,
@@ -56,12 +56,12 @@
    "icon": null,
    "kanban_board": null,
    "label": "Campaign Performance",
-   "link_to": null,
-   "report_ref_doctype": null,
+   "link_to": "Campaign Performance",
+   "report_ref_doctype": "Meta Marketing KPI",
    "restrict_to_domain": null,
    "stats_filter": null,
-   "type": "URL",
-   "url": "/app/query-report/Campaign%20Performance?doctype=Meta%20Marketing%20KPI"
+   "type": "Report",
+   "url": null
   },
   {
    "color": "Purple",
@@ -70,12 +70,12 @@
    "icon": null,
    "kanban_board": null,
    "label": "Ad Performance",
-   "link_to": null,
-   "report_ref_doctype": null,
+   "link_to": "Ad Performance",
+   "report_ref_doctype": "Meta Marketing KPI",
    "restrict_to_domain": null,
    "stats_filter": null,
-   "type": "URL",
-   "url": "/app/query-report/Ad%20Performance?doctype=Meta%20Marketing%20KPI"
+   "type": "Report",
+   "url": null
   },
   {
    "color": "Teal",
@@ -92,5 +92,5 @@
    "url": null
   }
  ],
- "title": "Meta Marketing KPI"
+ "title": "Meta Ads KPI"
 }
