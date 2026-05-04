@@ -4,13 +4,14 @@ import frappe
 
 
 WORKSPACE_NAME = "Meta Marketing Dashboard"
+WORKSPACE_LABEL = "Meta Marketing KPI"
 WORKSPACE_TITLE = "Meta Marketing KPI"
 WORKSPACE_MODULE = "Meta Marketing KPI"
 
 WORKSPACE_CONTENT = (
     '[{"id":"meta_header","type":"header","data":{"text":"Meta Marketing KPI","col":12}},'
-    '{"id":"meta_shortcut_1","type":"shortcut","data":{"shortcut_name":"KPI Records","col":3}},'
-    '{"id":"meta_shortcut_2","type":"shortcut","data":{"shortcut_name":"Raw Data","col":3}},'
+    '{"id":"meta_shortcut_1","type":"shortcut","data":{"shortcut_name":"Meta Marketing KPI","col":3}},'
+    '{"id":"meta_shortcut_2","type":"shortcut","data":{"shortcut_name":"Meta Raw Data","col":3}},'
     '{"id":"meta_shortcut_3","type":"shortcut","data":{"shortcut_name":"Campaign Performance","col":3}},'
     '{"id":"meta_shortcut_4","type":"shortcut","data":{"shortcut_name":"Ad Performance","col":3}},'
     '{"id":"meta_shortcut_5","type":"shortcut","data":{"shortcut_name":"Account Performance","col":3}}]'
@@ -19,15 +20,15 @@ WORKSPACE_CONTENT = (
 WORKSPACE_SHORTCUTS = [
     {
         "color": "Blue",
-        "label": "KPI Records",
+        "label": "Meta Marketing KPI",
         "type": "URL",
-        "url": "/app/meta-marketing-kpi?doctype=Meta%20Marketing%20KPI",
+        "url": "/app/meta-marketing-kpi",
     },
     {
         "color": "Green",
-        "label": "Raw Data",
+        "label": "Meta Raw Data",
         "type": "URL",
-        "url": "/app/meta-raw-data?doctype=Meta%20Raw%20Data",
+        "url": "/app/meta-raw-data",
     },
     {
         "color": "Orange",
@@ -81,7 +82,7 @@ def ensure_workspace() -> None:
             {
                 "doctype": "Workspace",
                 "name": WORKSPACE_NAME,
-                "label": WORKSPACE_NAME,
+                "label": WORKSPACE_LABEL,
                 "title": WORKSPACE_TITLE,
                 "module": WORKSPACE_MODULE,
                 "public": 1,
@@ -98,7 +99,7 @@ def ensure_workspace() -> None:
         "Workspace",
         WORKSPACE_NAME,
         {
-            "label": WORKSPACE_NAME,
+            "label": WORKSPACE_LABEL,
             "title": WORKSPACE_TITLE,
             "module": WORKSPACE_MODULE,
             "public": 1,
