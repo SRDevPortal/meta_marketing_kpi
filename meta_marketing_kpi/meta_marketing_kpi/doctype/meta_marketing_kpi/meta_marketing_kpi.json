@@ -1,0 +1,1204 @@
+{
+    "actions": [],
+    "allow_rename": 1,
+    "autoname": "field:external_row_key",
+    "creation": "2026-04-06 11:46:00.000000",
+    "doctype": "DocType",
+    "editable_grid": 1,
+    "engine": "InnoDB",
+    "field_order": [
+        "kpi_date",
+        "platform",
+        "external_row_key",
+        "account_id",
+        "account_name",
+        "campaign_id",
+        "campaign_name",
+        "adset_id",
+        "adset_name",
+        "ad_id",
+        "ad_name",
+        "impressions",
+        "reach",
+        "spend",
+        "clicks",
+        "link_clicks",
+        "unique_link_clicks",
+        "ctr",
+        "cpc",
+        "cpm",
+        "page_engagement",
+        "post_engagement",
+        "post_reactions",
+        "comments",
+        "video_views",
+        "video_plays",
+        "video_25",
+        "video_50",
+        "video_75",
+        "video_100",
+        "messaging_conversations_started",
+        "messaging_first_reply",
+        "total_messaging_connections",
+        "message_depth_2",
+        "message_depth_3",
+        "message_depth_5",
+        "leads",
+        "quality_ranking",
+        "engagement_rate_ranking",
+        "conversion_rate_ranking",
+        "cost_per_message_started",
+        "cost_per_first_reply",
+        "cost_per_lead",
+        "video_completion_rate",
+        "service_line",
+        "department",
+        "doctor",
+        "location",
+        "source",
+        "funnel_type",
+        "creative_type",
+        "device_mobile_app",
+        "device_mobile_web",
+        "act_onsite_conversion_total_messaging_connection",
+        "act_onsite_conversion_messaging_block",
+        "act_onsite_conversion_post_unlike",
+        "act_like",
+        "act_post_interaction_gross",
+        "act_post_interaction_net",
+        "act_post",
+        "act_lead_raw",
+        "act_onsite_conversion_post_save",
+        "act_video_view_raw",
+        "act_onsite_conversion_post_net_comment",
+        "act_post_reaction_raw",
+        "act_onsite_conversion_post_net_save",
+        "act_onsite_conversion_post_unsave",
+        "act_onsite_conversion_post_net_like",
+        "cost_video_view",
+        "act_onsite_conversion_messaging_conversation_started_7d",
+        "cost_link_click",
+        "act_onsite_conversion_messaging_conversation_replied_7d",
+        "cost_like",
+        "act_onsite_conversion_messaging_user_depth_2_message_send",
+        "cost_post_interaction_gross",
+        "act_onsite_conversion_messaging_user_depth_3_message_send",
+        "cost_post_engagement",
+        "act_onsite_conversion_messaging_user_depth_5_message_send",
+        "cost_page_engagement",
+        "act_onsite_conversion_lead",
+        "cost_onsite_conversion_total_messaging_connection",
+        "act_onsite_conversion_lead_grouped",
+        "act_onsite_web_lead",
+        "cost_onsite_conversion_messaging_first_reply",
+        "act_offsite_complete_registration_add_meta_leads",
+        "cost_onsite_conversion_messaging_conversation_started_7d",
+        "act_offsite_search_add_meta_leads",
+        "cost_onsite_conversion_messaging_conversation_replied_7d",
+        "act_offsite_content_view_add_meta_leads",
+        "cost_onsite_conversion_messaging_user_depth_2_message_send",
+        "cost_onsite_conversion_messaging_user_depth_3_message_send",
+        "cost_onsite_conversion_messaging_user_depth_5_message_send",
+        "cost_onsite_conversion_lead",
+        "cost_onsite_conversion_lead_grouped",
+        "cost_onsite_web_lead",
+        "cost_offsite_submit_application_add_meta_leads",
+        "cost_offsite_search_add_meta_leads",
+        "cost_offsite_complete_registration_add_meta_leads",
+        "cost_offsite_content_view_add_meta_leads",
+        "cost_offsite_contact_website_add_meta_leads",
+        "cost_lead_raw",
+        "unique_onsite_conversion_total_messaging_connection",
+        "unique_onsite_conversion_messaging_first_reply",
+        "unique_onsite_conversion_returning_messaging_connection",
+        "unique_cost_onsite_conversion_total_messaging_connection",
+        "unique_cost_link_click",
+        "unique_cost_onsite_conversion_returning_messaging_connection",
+        "unique_cost_onsite_conversion_messaging_first_reply",
+        "placement_facebook_facebook_reels",
+        "placement_facebook_facebook_stories",
+        "placement_facebook_feed",
+        "placement_facebook_instream_video",
+        "placement_facebook_search",
+        "placement_instagram_feed",
+        "placement_instagram_instagram_explore",
+        "placement_instagram_instagram_explore_grid_home",
+        "placement_instagram_instagram_reels",
+        "placement_instagram_instagram_stories",
+        "age_18_24_female",
+        "age_18_24_male",
+        "age_18_24_unknown",
+        "age_25_34_female",
+        "age_25_34_male",
+        "age_25_34_unknown",
+        "age_35_44_female",
+        "age_35_44_male",
+        "age_35_44_unknown",
+        "age_45_54_female",
+        "age_45_54_male",
+        "age_45_54_unknown",
+        "age_55_64_female",
+        "age_55_64_male",
+        "age_55_64_unknown",
+        "age_65_plus_female",
+        "age_65_plus_male",
+        "age_65_plus_unknown"
+    ],
+    "fields": [
+        {
+            "fieldname": "kpi_date",
+            "fieldtype": "Date",
+            "label": "KPI Date",
+            "reqd": 1,
+            "in_list_view": 1
+        },
+        {
+            "default": "Meta",
+            "fieldname": "platform",
+            "fieldtype": "Data",
+            "label": "Platform",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "external_row_key",
+            "fieldtype": "Data",
+            "label": "External Row Key",
+            "reqd": 1,
+            "unique": 1,
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "account_id",
+            "fieldtype": "Data",
+            "label": "Account ID"
+        },
+        {
+            "fieldname": "account_name",
+            "fieldtype": "Data",
+            "label": "Account Name",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "campaign_id",
+            "fieldtype": "Data",
+            "label": "Campaign ID"
+        },
+        {
+            "fieldname": "campaign_name",
+            "fieldtype": "Data",
+            "label": "Campaign Name",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "adset_id",
+            "fieldtype": "Data",
+            "label": "Ad Set ID"
+        },
+        {
+            "fieldname": "adset_name",
+            "fieldtype": "Data",
+            "label": "Ad Set Name"
+        },
+        {
+            "fieldname": "ad_id",
+            "fieldtype": "Data",
+            "label": "Ad ID"
+        },
+        {
+            "fieldname": "ad_name",
+            "fieldtype": "Data",
+            "label": "Ad Name",
+            "in_list_view": 1
+        },
+        {
+            "fieldname": "impressions",
+            "fieldtype": "Int",
+            "label": "Impressions"
+        },
+        {
+            "fieldname": "reach",
+            "fieldtype": "Int",
+            "label": "Reach"
+        },
+        {
+            "fieldname": "spend",
+            "fieldtype": "Currency",
+            "label": "Spend"
+        },
+        {
+            "fieldname": "clicks",
+            "fieldtype": "Int",
+            "label": "Clicks"
+        },
+        {
+            "fieldname": "link_clicks",
+            "fieldtype": "Int",
+            "label": "Link Clicks"
+        },
+        {
+            "fieldname": "unique_link_clicks",
+            "fieldtype": "Int",
+            "label": "Unique Link Clicks"
+        },
+        {
+            "fieldname": "ctr",
+            "fieldtype": "Float",
+            "label": "CTR"
+        },
+        {
+            "fieldname": "cpc",
+            "fieldtype": "Currency",
+            "label": "CPC"
+        },
+        {
+            "fieldname": "cpm",
+            "fieldtype": "Currency",
+            "label": "CPM"
+        },
+        {
+            "fieldname": "page_engagement",
+            "fieldtype": "Int",
+            "label": "Page Engagement"
+        },
+        {
+            "fieldname": "post_engagement",
+            "fieldtype": "Int",
+            "label": "Post Engagement"
+        },
+        {
+            "fieldname": "post_reactions",
+            "fieldtype": "Int",
+            "label": "Post Reactions"
+        },
+        {
+            "fieldname": "comments",
+            "fieldtype": "Int",
+            "label": "Comments"
+        },
+        {
+            "fieldname": "video_views",
+            "fieldtype": "Int",
+            "label": "Video Views"
+        },
+        {
+            "fieldname": "video_plays",
+            "fieldtype": "Int",
+            "label": "Video Plays"
+        },
+        {
+            "fieldname": "video_25",
+            "fieldtype": "Int",
+            "label": "Video 25%"
+        },
+        {
+            "fieldname": "video_50",
+            "fieldtype": "Int",
+            "label": "Video 50%"
+        },
+        {
+            "fieldname": "video_75",
+            "fieldtype": "Int",
+            "label": "Video 75%"
+        },
+        {
+            "fieldname": "video_100",
+            "fieldtype": "Int",
+            "label": "Video 100%"
+        },
+        {
+            "fieldname": "messaging_conversations_started",
+            "fieldtype": "Int",
+            "label": "Messaging Conversations Started"
+        },
+        {
+            "fieldname": "messaging_first_reply",
+            "fieldtype": "Int",
+            "label": "Messaging First Reply"
+        },
+        {
+            "fieldname": "total_messaging_connections",
+            "fieldtype": "Int",
+            "label": "Total Messaging Connections"
+        },
+        {
+            "fieldname": "message_depth_2",
+            "fieldtype": "Int",
+            "label": "Message Depth 2"
+        },
+        {
+            "fieldname": "message_depth_3",
+            "fieldtype": "Int",
+            "label": "Message Depth 3"
+        },
+        {
+            "fieldname": "message_depth_5",
+            "fieldtype": "Int",
+            "label": "Message Depth 5"
+        },
+        {
+            "fieldname": "leads",
+            "fieldtype": "Int",
+            "label": "Leads"
+        },
+        {
+            "fieldname": "quality_ranking",
+            "fieldtype": "Data",
+            "label": "Quality Ranking"
+        },
+        {
+            "fieldname": "engagement_rate_ranking",
+            "fieldtype": "Data",
+            "label": "Engagement Rate Ranking"
+        },
+        {
+            "fieldname": "conversion_rate_ranking",
+            "fieldtype": "Data",
+            "label": "Conversion Rate Ranking"
+        },
+        {
+            "fieldname": "cost_per_message_started",
+            "fieldtype": "Currency",
+            "label": "Cost Per Message Started"
+        },
+        {
+            "fieldname": "cost_per_first_reply",
+            "fieldtype": "Currency",
+            "label": "Cost Per First Reply"
+        },
+        {
+            "fieldname": "cost_per_lead",
+            "fieldtype": "Currency",
+            "label": "Cost Per Lead"
+        },
+        {
+            "fieldname": "video_completion_rate",
+            "fieldtype": "Float",
+            "label": "Video Completion Rate"
+        },
+        {
+            "fieldname": "service_line",
+            "fieldtype": "Data",
+            "label": "Service Line"
+        },
+        {
+            "fieldname": "department",
+            "fieldtype": "Data",
+            "label": "Department"
+        },
+        {
+            "fieldname": "doctor",
+            "fieldtype": "Data",
+            "label": "Doctor"
+        },
+        {
+            "fieldname": "location",
+            "fieldtype": "Data",
+            "label": "Location"
+        },
+        {
+            "fieldname": "source",
+            "fieldtype": "Link",
+            "label": "Source",
+            "options": "Lead Source"
+        },
+        {
+            "fieldname": "funnel_type",
+            "fieldtype": "Data",
+            "label": "Funnel Type"
+        },
+        {
+            "fieldname": "creative_type",
+            "fieldtype": "Data",
+            "label": "Creative Type"
+        },
+        {
+            "fieldname": "device_mobile_app",
+            "fieldtype": "Int",
+            "label": "Device Mobile App",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "device_mobile_web",
+            "fieldtype": "Int",
+            "label": "Device Mobile Web",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_total_messaging_connection",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Total Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_block",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging Block",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_unlike",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Unlike",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_like",
+            "fieldtype": "Int",
+            "label": "Act Like",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_post_interaction_gross",
+            "fieldtype": "Int",
+            "label": "Act Post Interaction Gross",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_post_interaction_net",
+            "fieldtype": "Int",
+            "label": "Act Post Interaction Net",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_post",
+            "fieldtype": "Int",
+            "label": "Act Post",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_lead_raw",
+            "fieldtype": "Int",
+            "label": "Act Lead Raw",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_save",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Save",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_video_view_raw",
+            "fieldtype": "Int",
+            "label": "Act Video View Raw",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_net_comment",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Net Comment",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_post_reaction_raw",
+            "fieldtype": "Int",
+            "label": "Act Post Reaction Raw",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_net_save",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Net Save",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_unsave",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Unsave",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_post_net_like",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Post Net Like",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_video_view",
+            "fieldtype": "Currency",
+            "label": "Cost Video View",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_conversation_started_7d",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging Conversation Started 7D",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_link_click",
+            "fieldtype": "Currency",
+            "label": "Cost Link Click",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_conversation_replied_7d",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging Conversation Replied 7D",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_like",
+            "fieldtype": "Currency",
+            "label": "Cost Like",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_user_depth_2_message_send",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging User Depth 2 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_post_interaction_gross",
+            "fieldtype": "Currency",
+            "label": "Cost Post Interaction Gross",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_user_depth_3_message_send",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging User Depth 3 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_post_engagement",
+            "fieldtype": "Currency",
+            "label": "Cost Post Engagement",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_messaging_user_depth_5_message_send",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Messaging User Depth 5 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_page_engagement",
+            "fieldtype": "Currency",
+            "label": "Cost Page Engagement",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_lead",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Lead",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_total_messaging_connection",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Total Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_conversion_lead_grouped",
+            "fieldtype": "Int",
+            "label": "Act Onsite Conversion Lead Grouped",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_onsite_web_lead",
+            "fieldtype": "Int",
+            "label": "Act Onsite Web Lead",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_first_reply",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging First Reply",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_offsite_complete_registration_add_meta_leads",
+            "fieldtype": "Int",
+            "label": "Act Offsite Complete Registration Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_conversation_started_7d",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging Conversation Started 7D",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_offsite_search_add_meta_leads",
+            "fieldtype": "Int",
+            "label": "Act Offsite Search Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_conversation_replied_7d",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging Conversation Replied 7D",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "act_offsite_content_view_add_meta_leads",
+            "fieldtype": "Int",
+            "label": "Act Offsite Content View Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_user_depth_2_message_send",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging User Depth 2 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_user_depth_3_message_send",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging User Depth 3 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_messaging_user_depth_5_message_send",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Messaging User Depth 5 Message Send",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_lead",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Lead",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_conversion_lead_grouped",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Conversion Lead Grouped",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_onsite_web_lead",
+            "fieldtype": "Currency",
+            "label": "Cost Onsite Web Lead",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_offsite_submit_application_add_meta_leads",
+            "fieldtype": "Currency",
+            "label": "Cost Offsite Submit Application Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_offsite_search_add_meta_leads",
+            "fieldtype": "Currency",
+            "label": "Cost Offsite Search Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_offsite_complete_registration_add_meta_leads",
+            "fieldtype": "Currency",
+            "label": "Cost Offsite Complete Registration Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_offsite_content_view_add_meta_leads",
+            "fieldtype": "Currency",
+            "label": "Cost Offsite Content View Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_offsite_contact_website_add_meta_leads",
+            "fieldtype": "Currency",
+            "label": "Cost Offsite Contact Website Add Meta Leads",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "cost_lead_raw",
+            "fieldtype": "Currency",
+            "label": "Cost Lead Raw",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_onsite_conversion_total_messaging_connection",
+            "fieldtype": "Int",
+            "label": "Unique Onsite Conversion Total Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_onsite_conversion_messaging_first_reply",
+            "fieldtype": "Int",
+            "label": "Unique Onsite Conversion Messaging First Reply",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_onsite_conversion_returning_messaging_connection",
+            "fieldtype": "Int",
+            "label": "Unique Onsite Conversion Returning Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_cost_onsite_conversion_total_messaging_connection",
+            "fieldtype": "Currency",
+            "label": "Unique Cost Onsite Conversion Total Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_cost_link_click",
+            "fieldtype": "Currency",
+            "label": "Unique Cost Link Click",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_cost_onsite_conversion_returning_messaging_connection",
+            "fieldtype": "Currency",
+            "label": "Unique Cost Onsite Conversion Returning Messaging Connection",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "unique_cost_onsite_conversion_messaging_first_reply",
+            "fieldtype": "Currency",
+            "label": "Unique Cost Onsite Conversion Messaging First Reply",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_facebook_facebook_reels",
+            "fieldtype": "Int",
+            "label": "Placement Facebook Facebook Reels",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_facebook_facebook_stories",
+            "fieldtype": "Int",
+            "label": "Placement Facebook Facebook Stories",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_facebook_feed",
+            "fieldtype": "Int",
+            "label": "Placement Facebook Feed",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_facebook_instream_video",
+            "fieldtype": "Int",
+            "label": "Placement Facebook Instream Video",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_facebook_search",
+            "fieldtype": "Int",
+            "label": "Placement Facebook Search",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_instagram_feed",
+            "fieldtype": "Int",
+            "label": "Placement Instagram Feed",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_instagram_instagram_explore",
+            "fieldtype": "Int",
+            "label": "Placement Instagram Explore",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_instagram_instagram_explore_grid_home",
+            "fieldtype": "Int",
+            "label": "Placement Instagram Explore Grid Home",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_instagram_instagram_reels",
+            "fieldtype": "Int",
+            "label": "Placement Instagram Reels",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "placement_instagram_instagram_stories",
+            "fieldtype": "Int",
+            "label": "Placement Instagram Stories",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_18_24_female",
+            "fieldtype": "Int",
+            "label": "Age 18 24 Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_18_24_male",
+            "fieldtype": "Int",
+            "label": "Age 18 24 Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_18_24_unknown",
+            "fieldtype": "Int",
+            "label": "Age 18 24 Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_25_34_female",
+            "fieldtype": "Int",
+            "label": "Age 25 34 Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_25_34_male",
+            "fieldtype": "Int",
+            "label": "Age 25 34 Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_25_34_unknown",
+            "fieldtype": "Int",
+            "label": "Age 25 34 Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_35_44_female",
+            "fieldtype": "Int",
+            "label": "Age 35 44 Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_35_44_male",
+            "fieldtype": "Int",
+            "label": "Age 35 44 Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_35_44_unknown",
+            "fieldtype": "Int",
+            "label": "Age 35 44 Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_45_54_female",
+            "fieldtype": "Int",
+            "label": "Age 45 54 Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_45_54_male",
+            "fieldtype": "Int",
+            "label": "Age 45 54 Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_45_54_unknown",
+            "fieldtype": "Int",
+            "label": "Age 45 54 Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_55_64_female",
+            "fieldtype": "Int",
+            "label": "Age 55 64 Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_55_64_male",
+            "fieldtype": "Int",
+            "label": "Age 55 64 Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_55_64_unknown",
+            "fieldtype": "Int",
+            "label": "Age 55 64 Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_65_plus_female",
+            "fieldtype": "Int",
+            "label": "Age 65 Plus Female",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_65_plus_male",
+            "fieldtype": "Int",
+            "label": "Age 65 Plus Male",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        },
+        {
+            "fieldname": "age_65_plus_unknown",
+            "fieldtype": "Int",
+            "label": "Age 65 Plus Unknown",
+            "reqd": 0,
+            "in_list_view": 0,
+            "read_only": 0,
+            "unique": 0
+        }
+    ],
+    "index_web_pages_for_search": 1,
+    "links": [],
+    "module": "Meta Marketing KPI",
+    "name": "Meta Marketing KPI",
+    "owner": "Administrator",
+    "permissions": [
+        {
+            "create": 1,
+            "delete": 1,
+            "email": 1,
+            "export": 1,
+            "print": 1,
+            "read": 1,
+            "report": 1,
+            "role": "System Manager",
+            "share": 1,
+            "write": 1
+        }
+    ],
+    "row_format": "Dynamic",
+    "sort_field": "modified",
+    "sort_order": "DESC",
+    "states": [],
+    "track_changes": 1
+}

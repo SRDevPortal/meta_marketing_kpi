@@ -1,0 +1,23 @@
+{
+ "add_total_row": 0,
+ "columns": [],
+ "creation": "2026-04-06 11:47:30.000000",
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [],
+ "idx": 0,
+ "is_standard": "Yes",
+ "letterhead": null,
+ "modified": "2026-04-06 11:47:30.000000",
+ "modified_by": "Administrator",
+ "module": "Meta Marketing KPI",
+ "name": "Ad Performance",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select kpi_date, campaign_name, adset_name, ad_name, sum(spend) as spend, sum(impressions) as impressions, sum(video_views) as video_views, sum(video_25) as video_25, sum(video_50) as video_50, sum(video_75) as video_75, sum(video_100) as video_100, sum(messaging_conversations_started) as messaging_conversations_started, sum(messaging_first_reply) as messaging_first_reply, avg(cost_per_first_reply) as cost_per_first_reply from `tabMeta Marketing KPI` group by kpi_date, campaign_name, adset_name, ad_name order by kpi_date desc",
+ "ref_doctype": "Meta Marketing KPI",
+ "report_name": "Ad Performance",
+ "report_type": "Query Report",
+ "roles": [{"role": "System Manager"}]
+}
