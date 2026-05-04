@@ -77,6 +77,8 @@ def ensure_workspace() -> None:
     if not frappe.db.exists("DocType", "Workspace"):
         return
 
+    release_duplicate_workspace_label()
+
     if not frappe.db.exists("Workspace", WORKSPACE_NAME):
         workspace = frappe.get_doc(
             {
@@ -129,3 +131,37 @@ def ensure_workspace() -> None:
             }
         )
         row.db_insert()
+
+
+def release_duplicate_workspace_label() -> None:
+    duplicate_workspaces = frappe.get_all(
+        "Workspace",
+        filters={"label": WORKSPACE_LABEL, "name": ["!=", WORKSPACE_NAME]},
+        pluck="name",
+    )
+
+    for workspace_name in duplicate_workspaces:
+        frappe.db.set_value(
+            "Workspace",
+            workspace_name,
+            {
+                "label": get_legacy_workspace_label(workspace_name),
+                "is_hidden": 1,
+            },
+            update_modified=False,
+        )
+
+
+def get_legacy_workspace_label(workspace_name: str) -> str:
+    base_label = f"{workspace_name} Legacy"
+    label = base_label
+    counter = 2
+
+    while frappe.db.exists(
+        "Workspace",
+        {"label": label, "name": ["!=", workspace_name]},
+    ):
+        label = f"{base_label} {counter}"
+        counter += 1
+
+    return label
