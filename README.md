@@ -2,13 +2,6 @@
 
 Meta marketing KPI dashboard for ERPNext
 
-### Compatibility
-
-- Supports Frappe/ERPNext `15.x` and `16.x`.
-- Requires ERPNext because `Meta Marketing KPI.source` links to `Lead Source`.
-- Optional OpenAI answers use `openai_api_key` from site config. Without it, the app falls back to rule-based responses.
-- AI filter and analyst endpoints are restricted to `System Manager`.
-
 ### Installation
 
 You can install this app using the [bench](https://github.com/frappe/bench) CLI:

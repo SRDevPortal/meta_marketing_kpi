@@ -1,16 +1,13 @@
 [project]
 name = "meta_marketing_kpi"
-version = "0.0.1"
-description = "Meta marketing KPI dashboard for ERPNext"
 authors = [
-    { name = "SRIAAS", email = "admin@example.com"}
+    { name = "SAI", email = "sai@example.com"}
 ]
-
-readme = "README.md"
+description = "Meta marketing KPI dashboard for ERPNext"
 requires-python = ">=3.10"
-
+readme = "README.md"
+dynamic = ["version"]
 dependencies = [
-    "requests>=2.31.0",
     # "frappe~=15.0.0" # Installed and managed by bench.
 ]
 
@@ -18,16 +15,14 @@ dependencies = [
 requires = ["flit_core >=3.4,<4"]
 build-backend = "flit_core.buildapi"
 
-# Frappe compatibility requirement
-[tool.bench.frappe-dependencies]
-frappe = ">=15.0.0,<17.0.0"
-erpnext = ">=15.0.0,<17.0.0"
-
 # These dependencies are only installed when developer mode is enabled
 [tool.bench.dev-dependencies]
 # package_name = "~=1.1.0"
 
-# Ruff configuration for linting
+# These apt dependencies will be installed from Ubuntu repositories when you host your app on Frappe Cloud
+[deploy.dependencies.apt]
+packages = []
+
 [tool.ruff]
 line-length = 110
 target-version = "py310"
@@ -42,7 +37,6 @@ select = [
     "B",
     "RUF",
 ]
-
 ignore = [
     "B017", # assertRaises(Exception) - should be more specific
     "B018", # useless expression, not assigned to anything
@@ -58,10 +52,12 @@ ignore = [
     "F722", # syntax error in forward type annotation
     "W191", # indentation contains tabs
 ]
-
 typing-modules = ["frappe.types.DF"]
 
 [tool.ruff.format]
 quote-style = "double"
 indent-style = "tab"
 docstring-code-format = true
+
+[tool.bench.frappe-dependencies]
+frappe = ">=15.0.0,<16.0.0"
