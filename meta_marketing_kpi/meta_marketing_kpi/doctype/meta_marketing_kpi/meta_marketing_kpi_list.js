@@ -5,67 +5,148 @@ frappe.listview_settings["Meta Marketing KPI"] = {
 				method: "meta_marketing_kpi.meta_marketing_kpi.ai.api.get_meta_filter_options",
 				callback: (r) => {
 					const data = r.message || {};
-					const adOptions = (data.ad_names || []).filter(Boolean);
 					const accountOptions = (data.account_names || []).filter(Boolean);
+					const accountCampaignsMap = data.account_campaigns_map || {};
 
-					if (!adOptions.length) {
-						frappe.msgprint("No ad names found in Meta Marketing KPI data.");
-						return;
-					}
 					if (!accountOptions.length) {
 						frappe.msgprint("No account names found in Meta Marketing KPI data.");
 						return;
 					}
 
-					frappe.prompt(
-						[
-							{
-								fieldname: "account_name",
-								label: "Account Name",
-								fieldtype: "Select",
-								reqd: 1,
-								options: accountOptions.join("\n"),
-								default: accountOptions[0],
-							},
-							{
-								fieldname: "ad_name",
-								label: "Ad Name",
-								fieldtype: "Select",
-								reqd: 1,
-								options: adOptions.join("\n"),
-								default: adOptions[0],
-							},
-							{
-								fieldname: "question",
-								label: "Question",
-								fieldtype: "Small Text",
-								reqd: 1,
-								default: "Is this campaign running good or not? What should I improve?",
-							},
-						],
-						(values) => {
-							openMetaAIChat({
-								adName: values.ad_name,
-								accountName: values.account_name,
-								initialQuestion: values.question,
-								days: 60,
-							});
-						},
-						"Ask AI Campaign Analyst",
-						"Open Chat"
-					);
+					openMetaAISelector(accountOptions, accountCampaignsMap, data.campaign_names || []);
 				},
 			});
 		});
 	},
 };
 
-function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }) {
-	const messages = [];
+function openMetaAISelector(accountOptions, accountCampaignsMap, fallbackCampaignNames = []) {
+	const normalizedMap = {};
+	Object.entries(accountCampaignsMap || {}).forEach(([key, campaigns]) => {
+		normalizedMap[String(key || "").trim().toLowerCase()] = (campaigns || []).filter(Boolean);
+	});
+	const defaultAccount = accountOptions[0] || "";
+
 	const dialog = new frappe.ui.Dialog({
-		title: `AI Campaign Chat - ${adName || "Ad"}`,
+		title: "Ask AI Campaign Analyst",
+		fields: [
+			{
+				fieldname: "account_name",
+				label: "Account Name",
+				fieldtype: "Select",
+				reqd: 1,
+				options: accountOptions.join("\n"),
+				default: defaultAccount,
+			},
+			{
+				fieldname: "campaign_name",
+				label: "Campaign Name",
+				fieldtype: "Select",
+				reqd: 1,
+			},
+			{
+				fieldname: "select_multiple_campaigns",
+				label: "Select Multiple Campaigns",
+				fieldtype: "Check",
+				default: 0,
+			},
+			{
+				fieldname: "campaign_names",
+				label: "Campaign Names",
+				fieldtype: "MultiCheck",
+				columns: 1,
+				hidden: 1,
+			},
+			{
+				fieldname: "question",
+				label: "Question",
+				fieldtype: "Small Text",
+				reqd: 1,
+				default: "Is this campaign running good or not? What should I improve?",
+			},
+		],
+		primary_action_label: "Open Chat",
+		primary_action: (values) => {
+			const multiEnabled = !!values.select_multiple_campaigns;
+			const selectedCampaigns = normalizeCampaignSelection(values.campaign_names);
+			if (multiEnabled && !selectedCampaigns.length) {
+				frappe.msgprint("Please select at least one campaign.");
+				return;
+			}
+			openMetaAIChat({
+				campaignName: values.campaign_name,
+				campaignNames: multiEnabled ? selectedCampaigns : [],
+				accountName: values.account_name,
+				initialQuestion: values.question,
+				days: 60,
+			});
+			dialog.hide();
+		},
+	});
+
+	const refreshCampaignOptions = (account) => {
+		const accountKey = String(account || "").trim().toLowerCase();
+		const campaignsForAccount = normalizedMap[accountKey] || [];
+		const campaigns = [...new Set((campaignsForAccount || []).filter(Boolean).map((item) => String(item).trim()))];
+		const options = ["All", ...campaigns];
+		dialog.set_df_property("campaign_name", "options", options.join("\n"));
+		dialog.set_value("campaign_name", options[0] || "All");
+		dialog.set_df_property(
+			"campaign_names",
+			"options",
+			campaigns.map((label) => ({ label, value: label, checked: 0 }))
+		);
+		dialog.set_value("campaign_names", []);
+	};
+
+	const refreshMode = () => {
+		const multiEnabled = !!dialog.get_value("select_multiple_campaigns");
+		dialog.set_df_property("campaign_name", "hidden", multiEnabled ? 1 : 0);
+		dialog.set_df_property("campaign_name", "reqd", multiEnabled ? 0 : 1);
+		dialog.set_df_property("campaign_names", "hidden", multiEnabled ? 0 : 1);
+		if (multiEnabled) {
+			dialog.set_value("campaign_name", "All");
+		} else {
+			dialog.set_value("campaign_names", []);
+		}
+	};
+
+	dialog.show();
+	dialog.set_value("account_name", defaultAccount);
+	refreshCampaignOptions(defaultAccount);
+	refreshMode();
+	// Frappe dialog widgets can apply default values asynchronously on first open.
+	// Re-run once after render to avoid the initial "only All" campaign options state.
+	setTimeout(() => {
+		const account = dialog.get_value("account_name") || defaultAccount;
+		refreshCampaignOptions(account);
+		refreshMode();
+	}, 120);
+	dialog.get_field("account_name").$input.on("change", () => {
+		refreshCampaignOptions(dialog.get_value("account_name"));
+	});
+	dialog.get_field("select_multiple_campaigns").$input.on("change", () => {
+		refreshMode();
+	});
+}
+
+function openMetaAIChat({ campaignName, campaignNames = [], accountName, days = 60, initialQuestion = "" }) {
+	const messages = [];
+	const selectedCampaigns = campaignNames.length
+		? campaignNames
+		: campaignName && campaignName !== "All"
+			? [campaignName]
+			: [];
+	const scopeText = selectedCampaigns.length
+		? selectedCampaigns.join(", ")
+		: campaignName === "All"
+			? "All campaigns under selected account"
+			: "Not specified";
+	const dialog = new frappe.ui.Dialog({
+		title: `AI Campaign Chat - ${campaignNames.length ? `${campaignNames.length} Campaigns` : campaignName || "Campaign"}`,
 		size: "large",
 		fields: [
+			{ fieldtype: "HTML", fieldname: "selection_html" },
 			{ fieldtype: "HTML", fieldname: "chat_html" },
 			{
 				fieldtype: "Small Text",
@@ -79,12 +160,21 @@ function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }
 		primary_action: () => sendQuestion(),
 	});
 
+	const selectionField = dialog.get_field("selection_html");
 	const chatField = dialog.get_field("chat_html");
 	const chatHtml = chatField && chatField.$wrapper ? chatField.$wrapper : null;
-	if (!chatHtml) {
+	const selectionHtml = selectionField && selectionField.$wrapper ? selectionField.$wrapper : null;
+	if (!chatHtml || !selectionHtml) {
 		frappe.msgprint("Unable to open AI chat view. Please refresh and try again.");
 		return;
 	}
+
+	selectionHtml.html(
+		`<div style="margin-bottom:8px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:8px;background:#f8fafc;">
+			<div style="font-size:12px;color:#6b7280;">Analyzing Scope</div>
+			<div style="font-size:14px;color:#111827;"><b>Account:</b> ${escapeHtml(accountName || "N/A")}<br><b>Campaign(s):</b> ${escapeHtml(scopeText)}</div>
+		</div>`
+	);
 
 	chatHtml.css({
 		maxHeight: "420px",
@@ -122,8 +212,9 @@ function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }
 			method: "meta_marketing_kpi.meta_marketing_kpi.ai.api.ask_meta_campaign_ai",
 			args: {
 				account_name: accountName,
-				ad_name: adName,
-				question: composedQuestion,
+				campaign_name: campaignName,
+				campaign_names: campaignNames,
+				question: buildScopedQuestion(composedQuestion, accountName, selectedCampaigns, campaignName),
 				days,
 			},
 			freeze: true,
@@ -145,6 +236,51 @@ function buildThreadQuestion(messages) {
 	const lines = recent.map((item) => `${item.role === "user" ? "User" : "Assistant"}: ${item.text}`);
 	lines.push("Answer the latest user question with campaign-specific KPI evidence from context.");
 	return lines.join("\n");
+}
+
+function buildScopedQuestion(baseQuestion, accountName, selectedCampaigns, campaignName) {
+	const scopeLine = selectedCampaigns.length
+		? `Selected campaign names: ${selectedCampaigns.join(", ")}`
+		: campaignName === "All"
+			? "Selected campaign names: ALL CAMPAIGNS under selected account."
+			: `Selected campaign names: ${campaignName || "N/A"}`;
+	return [
+		`Meta Ads Account: ${accountName || "N/A"}`,
+		scopeLine,
+		"Important: mention selected campaign names explicitly in your analysis.",
+		baseQuestion,
+	].join("\n");
+}
+
+function normalizeCampaignSelection(rawValue) {
+	if (Array.isArray(rawValue)) {
+		return rawValue
+			.map((item) => {
+				if (!item) return "";
+				if (typeof item === "object") {
+					if (item.checked === 0 || item.checked === false) return "";
+					return String(item.value || item.label || item.name || "").trim();
+				}
+				return String(item).trim();
+			})
+			.filter(Boolean);
+	}
+
+	if (rawValue && typeof rawValue === "object") {
+		return Object.entries(rawValue)
+			.filter(([, selected]) => !!selected)
+			.map(([label]) => String(label).trim())
+			.filter(Boolean);
+	}
+
+	if (typeof rawValue === "string") {
+		return rawValue
+			.split(",")
+			.map((item) => item.trim())
+			.filter(Boolean);
+	}
+
+	return [];
 }
 
 function formatAiAnswer(text) {

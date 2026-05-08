@@ -3,19 +3,19 @@ frappe.ui.form.on("Meta Marketing KPI", {
 		if (frm.is_new()) return;
 		frm.add_custom_button("Ask AI Campaign Analyst", () => {
 			openMetaAIChat({
-				adName: frm.doc.ad_name,
+				campaignName: frm.doc.campaign_name,
 				accountName: frm.doc.account_name,
 				days: 60,
-				initialQuestion: `Ad ${frm.doc.ad_name || frm.doc.ad_id} under account ${frm.doc.account_name || ""} is running good or not? What should I improve?`,
+				initialQuestion: `Campaign ${frm.doc.campaign_name || frm.doc.campaign_id} under account ${frm.doc.account_name || ""} is running good or not? What should I improve?`,
 			});
 		});
 	},
 });
 
-function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }) {
+function openMetaAIChat({ campaignName, accountName, days = 60, initialQuestion = "" }) {
 	const messages = [];
 	const dialog = new frappe.ui.Dialog({
-		title: `AI Campaign Chat - ${adName || "Ad"}`,
+		title: `AI Campaign Chat - ${campaignName || "Campaign"}`,
 		size: "large",
 		fields: [
 			{ fieldtype: "HTML", fieldname: "chat_html" },
@@ -74,7 +74,7 @@ function openMetaAIChat({ adName, accountName, days = 60, initialQuestion = "" }
 			method: "meta_marketing_kpi.meta_marketing_kpi.ai.api.ask_meta_campaign_ai",
 			args: {
 				account_name: accountName,
-				ad_name: adName,
+				campaign_name: campaignName,
 				question: composedQuestion,
 				days,
 			},

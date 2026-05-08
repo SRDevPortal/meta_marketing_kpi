@@ -10,7 +10,7 @@
   "icon": "chart",
   "indicator_color": null,
   "is_hidden": 0,
-  "label": "Meta Marketing KPI",
+  "label": "Meta Marketing KPI Dashboard",
   "links": [],
   "modified": "2026-04-06 11:40:11.677471",
   "module": "Meta Marketing KPI",
@@ -109,6 +109,6 @@
     "url": "/app/query-report/Account%20Performance?doctype=Meta%20Marketing%20KPI"
    }
   ],
-  "title": "Meta Marketing KPI"
+  "title": "Meta Marketing KPI Dashboard"
  }
 ]
